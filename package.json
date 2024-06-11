@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "debug": "^4.3.5",
+    "firebase": "^10.12.2",
     "gsap": "^3.12.5",
     "hamburger-react": "^2.5.1",
     "http-proxy-middleware": "^3.0.0",

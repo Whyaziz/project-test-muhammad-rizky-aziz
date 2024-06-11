@@ -1,8 +1,37 @@
 "use client";
+import { useEffect, useState } from "react";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBFlEJE7a3_vxMFWeC-5-7lW4NSQl9-ipE",
+  authDomain: "project-test-5bccc.firebaseapp.com",
+  projectId: "project-test-5bccc",
+  storageBucket: "project-test-5bccc.appspot.com",
+  messagingSenderId: "525399919004",
+  appId: "1:525399919004:web:ddd70018a9ad25e4e8a059",
+  measurementId: "G-HXLGWCH0N1",
+};
 
 export default function Hero() {
+  const [backgroundUrl, setBackgroundUrl] = useState("");
+
+  useEffect(() => {
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const gsReference = ref(storage, "bg_hero_suit.png");
+
+    getDownloadURL(gsReference)
+      .then((url) => {
+        setBackgroundUrl(url);
+      })
+      .catch((error) => {
+        console.error("Error getting background image URL: ", error);
+      });
+  }, []);
+
   const backgroundImage = {
-    backgroundImage: "url('/assets/images/ideas/bg_hero.png')",
+    backgroundImage: `url('${backgroundUrl}')`,
     backgroundSize: "cover",
     backgroundPosition: "top",
   };
