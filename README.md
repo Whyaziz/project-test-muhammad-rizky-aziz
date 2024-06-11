@@ -21,7 +21,8 @@ Dalam pengerjaan website ini, saya telah memenuhi ketentuan-ketentuan berikut:
 3. **List Post**
    - Semua fungsi sort dan show-per-page dapat dijalankan, begitu juga status items yang ditunjukkan dalam satu halaman sesuai urutan item-nya (semua fungsi filter dapat digunakan dengan semestinya).
    - Pilihan sort yang disediakan adalah berdasarkan terbaru dan terlama saja (terpenuhi).
-   - Ketika melakukan sort, mengubah show-per-page, dan berpindah halaman kemudian halaman di-refresh, data atau state pada halaman tersebut tidak kembali ke state awal (terpenuhi).
+   - Pilihan jumlah item per page yang harus disediakan adalah [10, 20, 50] (terpenuhi)
+   - Ketika melakukan sort, mengubah show-per-page, dan berpindah halaman kemudian halaman di-refresh, data atau state pada halaman tersebut tidak kembali ke state awal (terpenuhi dengan menggunakan url querry params).
    - Ratio thumbnail harus konsisten di masing-masing cards (terpenuhi dengan rasio 3:2).
    - Pastikan menerapkan lazyloading pada gambar (terpenuhi, tag Image dari NextJS memiliki lazyload ketika dilakukan build).
    - Title post pada card dibatasi tingginya maksimal 3 baris, dan gunakan ellipsis jika ada title yang lebih dari 3 baris (terpenuhi).
