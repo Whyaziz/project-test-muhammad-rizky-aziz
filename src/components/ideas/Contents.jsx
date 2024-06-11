@@ -75,7 +75,7 @@ export default function Contents() {
       <div className="bg-white h-[25vh] flex w-[140%] absolute top-[-5rem] lg:top-[-5rem] left-[-10%] -rotate-3" />
       <div className="bg-white min-h-screen flex flex-col justify-center items-center text-black p-8 lg:p-16 z-10">
         <div className="flex flex-col lg:flex-row w-full justify-between">
-          <div className="w-full flex">
+          <div className="w-full flex items-end py-4">
             <p>
               Showing: {startItem} - {endItem} of {totalItems}
             </p>
@@ -116,10 +116,7 @@ export default function Contents() {
               className="flex flex-col w-full relative overflow-clip rounded-lg lg:rounded-xl shadow-xl"
             >
               <Image
-                src={
-                  //   idea.medium_image[0].url ||
-                  "https://placehold.co/600x400/png"
-                }
+                src={"https://placehold.co/600x400/png"}
                 width={1000}
                 height={1000}
                 className="h-auto w-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
@@ -127,7 +124,7 @@ export default function Contents() {
               />
               <div className="flex flex-col flex-wrap p-4">
                 <p className="text-xs lg:text-sm text-slate-400">
-                  {new Date(idea.published_at).toLocaleDateString()}
+                  {new Date(idea.published_at).toDateString()}
                 </p>
                 <p className="line-clamp-3 text-sm lg:text-base hover:text-orange-suit-500 hover:scale-[101%] transition-color duration-150">
                   {idea.title}
@@ -136,16 +133,16 @@ export default function Contents() {
             </div>
           ))}
         </div>
-        <div className="flex w-full justify-center items-center mt-4">
+        <div className="flex w-full justify-center items-center mt-6 lg:mt-12">
           <button
-            className="p-2 m-2 border border-gray-300 rounded-lg"
+            className="p-2 rounded-lg"
             onClick={handleFirstPage}
             disabled={page === 1}
           >
             {"<<"}
           </button>
           <button
-            className="p-2 m-2 border border-gray-300 rounded-lg"
+            className="p-2 rounded-lg"
             onClick={handlePreviousPage}
             disabled={page === 1}
           >
@@ -154,7 +151,7 @@ export default function Contents() {
           {[...Array(totalPages)].map((_, index) => (
             <button
               key={index}
-              className={`p-2 m-2 border border-gray-300 rounded-lg ${
+              className={`p-2 rounded-lg ${
                 page === index + 1 ? "bg-orange-500 text-white" : ""
               }`}
               onClick={() => setPage(index + 1)}
@@ -163,14 +160,14 @@ export default function Contents() {
             </button>
           ))}
           <button
-            className="p-2 m-2 border border-gray-300 rounded-lg"
+            className="p-2 rounded-lg"
             onClick={handleNextPage}
             disabled={page === totalPages}
           >
             {">"}
           </button>
           <button
-            className="p-2 m-2 border border-gray-300 rounded-lg"
+            className="p-2 rounded-lg"
             onClick={handleLastPage}
             disabled={page === totalPages}
           >
