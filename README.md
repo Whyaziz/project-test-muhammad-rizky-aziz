@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Berikut adalah perbaikan dari README yang Anda berikan:
 
-## Getting Started
+## Project Test Muhammad Rizky Aziz
 
-First, run the development server:
+Dalam proyek test ini, saya menggunakan framework NextJS dengan bahasa pemrograman JavaScript. Anda dapat melihat hasil proyek ini dengan mengunjungi tautan berikut: [Project Test Muhammad Rizky Aziz](https://project-test-muhammad-rizky-aziz.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Ketentuan
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Dalam pengerjaan website ini, saya telah memenuhi ketentuan-ketentuan berikut:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Header**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   - **Fixed position**: Ketika pengguna scroll ke bawah, header menghilang, namun ketika pengguna scroll ke atas, header muncul kembali dengan background sedikit transparan (terpenuhi dengan bantuan library GSAP untuk menghandle animasinya).
+   - **Active state menu**: Menunjukkan halaman yang sedang dikunjungi (terpenuhi dengan menggunakan `useSelectedLayoutSegment` dari NextJS).
 
-## Learn More
+2. **Banner**
 
-To learn more about Next.js, take a look at the following resources:
+   - Banner terdiri dari sebuah gambar yang bisa di-update melalui CMS tanpa perlu mengedit gambar tersebut untuk menambahkan area miring di bagian bawah banner (terpenuhi, gambar pada banner dapat diganti dengan mengubah file pada Firebase Storage).
+   - **Efek parallax**: Saat scroll, ada efek parallax antara gambar dan teksnya (ketika laman di-scroll, background banner tetap berada di tempat sedangkan teksnya akan ter-scroll).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **List Post**
+   - Semua fungsi sort dan show-per-page dapat dijalankan, begitu juga status items yang ditunjukkan dalam satu halaman sesuai urutan item-nya (semua fungsi filter dapat digunakan dengan semestinya).
+   - Pilihan sort yang disediakan adalah berdasarkan terbaru dan terlama saja (terpenuhi).
+   - Ketika melakukan sort, mengubah show-per-page, dan berpindah halaman kemudian halaman di-refresh, data atau state pada halaman tersebut tidak kembali ke state awal (terpenuhi).
+   - Ratio thumbnail harus konsisten di masing-masing cards (terpenuhi dengan rasio 3:2).
+   - Pastikan menerapkan lazyloading pada gambar (terpenuhi, tag Image dari NextJS memiliki lazyload ketika dilakukan build).
+   - Title post pada card dibatasi tingginya maksimal 3 baris, dan gunakan ellipsis jika ada title yang lebih dari 3 baris (terpenuhi).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Catatan
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Karena terkendala proxy, thumbnail belum bisa dimuat ke dalam web.

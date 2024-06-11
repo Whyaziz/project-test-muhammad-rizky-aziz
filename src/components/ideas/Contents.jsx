@@ -4,20 +4,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Contents() {
-  const [ideas, setIdeas] = useState([]);
-  const [sortedIdeas, setSortedIdeas] = useState("-published_at");
-  const [appendedIdeas, setAppendedIdeas] = useState("medium_image");
-  const [pageSizes, setPageSizes] = useState(8);
-  const [page, setPage] = useState(1);
+  const isClient = typeof window !== "undefined";
+  const queryParams = isClient
+    ? new URLSearchParams(window.location.search)
+    : new URLSearchParams();
 
+  const [ideas, setIdeas] = useState([]);
+  const [sortedIdeas, setSortedIdeas] = useState(
+    queryParams.get("sortedIdeas") || "-published_at"
+  );
+  const [appendedIdeas, setAppendedIdeas] = useState(
+    queryParams.get("appendedIdeas") || "medium_image"
+  );
+  const [pageSizes, setPageSizes] = useState(
+    parseInt(queryParams.get("pageSizes")) || 10
+  );
+  const [page, setPage] = useState(parseInt(queryParams.get("page")) || 1);
   const [totalPages, setTotalPages] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    if (isClient) {
+      queryParams.set("sortedIdeas", sortedIdeas);
+      queryParams.set("appendedIdeas", appendedIdeas);
+      queryParams.set("pageSizes", pageSizes.toString());
+      queryParams.set("page", page.toString());
+
+      window.history.pushState({}, "", "?" + queryParams.toString());
+    }
+  }, [sortedIdeas, appendedIdeas, pageSizes, page]);
 
   useEffect(() => {
     const fetchTotalItems = async () => {
       try {
         const response = await axios.get(
-          "https://suitmedia-backend.suitdev.com/api/ideas"
+          "https://suitmedia-backend.suitdev.com/api/ideas?&page[size]=100"
         );
         setTotalItems(response.data.data.length);
         setTotalPages(Math.ceil(response.data.data.length / pageSizes));
@@ -91,9 +112,9 @@ export default function Contents() {
                   setPage(1);
                 }}
               >
-                <option value={8}>8</option>
-                <option value={16}>16</option>
-                <option value={24}>24</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
               </select>
             </div>
             <div className="flex flex-row gap-4 items-center">
