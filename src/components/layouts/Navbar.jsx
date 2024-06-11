@@ -47,7 +47,7 @@ export default function Navbar() {
       id="navbar"
       className={`${
         scrollTop < 100 ? "bg-orange-suit-500" : "bg-transparent"
-      } text-white px-[10%] flex flex-col w-full fixed top-0 z-[9999] transition-colors duration-500`}
+      } text-white px-[10%] flex flex-col w-full fixed top-0 z-[9999] transition-colors duration-500 shadow-xl`}
     >
       <div className="flex flex-row justify-between items-center py-4">
         <Link href="/">
